@@ -18,10 +18,10 @@ func MapHandler(pathsToUrls map[string]string, fallback http.Handler) http.Handl
 		path := r.URL.Path
 		if url, ok := pathsToUrls[path]; ok {
 
-			fmt.Printf("Redirecting %s to %s", path, url)
+			fmt.Printf("Redirecting %s to %s\n", path, url)
 			http.Redirect(w, r, url, http.StatusTemporaryRedirect)
 		} else {
-			fmt.Printf("Path not found", path, url)
+			fmt.Printf("Path not found\n", path, url)
 			fallback.ServeHTTP(w, r)
 		}
 	})
